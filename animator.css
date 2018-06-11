@@ -1,3 +1,8 @@
+:root{
+    --startLocation: 100px;
+    --endLocation: 100px;
+}
+
 #main{
     display: flex;
 }
@@ -9,7 +14,7 @@
 
 .med{
     animation-name: medFreq;
-    animation-duration: 0.1s;
+    animation-duration: 0.2s;
 }
 
 .low{
@@ -18,16 +23,16 @@
 }
 
 @keyframes highFreq {
-    from {height: 100px;}
-    to {height: 160px;}
+    from {height: var(--startLocation);}
+    to {height: var(--endLocation);}
 }
 
 @keyframes medFreq {
-    from {height: 100px;}
-    to {height: 130px;}
+    from {height: var(--startLocation);}
+    to {height: var(--endLocation);}
 }
 
 @keyframes lowFreq {
-    from {height: 100px;}
-    to {height: 70px;}
+    from {height: var(--startLocation);}
+    to {height: var(--endLocation);}
 }
