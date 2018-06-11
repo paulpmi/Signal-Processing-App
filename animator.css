@@ -1,0 +1,33 @@
+#main{
+    display: flex;
+}
+
+.high{
+    animation-name: highFreq;
+    animation-duration: 0.1s;
+}
+
+.med{
+    animation-name: medFreq;
+    animation-duration: 0.1s;
+}
+
+.low{
+    animation-name: lowFreq;
+    animation-duration: 0.1s;
+}
+
+@keyframes highFreq {
+    from {height: 100px;}
+    to {height: 160px;}
+}
+
+@keyframes medFreq {
+    from {height: 100px;}
+    to {height: 130px;}
+}
+
+@keyframes lowFreq {
+    from {height: 100px;}
+    to {height: 70px;}
+}
