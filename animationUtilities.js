@@ -1,23 +1,39 @@
 const removeExistingAnimationClasses = circle => {
-  if (circle.classList.contains("low")) circle.classList.remove("low");
-
-  if (circle.classList.contains("high")) circle.classList.remove("high");
-
-  if (circle.classList.contains("med")) circle.classList.remove("med");
+  if (circle.classList.contains("Class"+circle.className)) circle.classList.remove("Class"+circle.className);
 };
 
-const addAnimationClass = (data, circle) => {
+const addAnimationClass = (newFrequency, circle) => {
   let style = document.documentElement.style;
-  console.log("DATA: " + data);
-  style.setProperty('--endLocation', circle.style.height + data + 'px');
-  style.setProperty('--startLocation', circle.style.height + 'px');
-  circle.classList.add("med");
-  console.log(circle.style.height);
+  console.log("START POINT: " + circle.style.height);
+  
+  const endPoint = newFrequency + 'px';
+  console.log("END POINT: ", endPoint);
+  style.setProperty('--startLocation', circle.style.height);
+  style.setProperty('--endLocation', endPoint);
+  console.log("Class NAME: " + 
+    circle.getAttribute("id")
+  );
+  circle.classList.add(createKeyFrames(circle.getAttribute("id"), circle.style.height, endPoint));
+
+  /*
   circle.addEventListener("webkitAnimationEnd", () => {
-    circle.style.height = circle.style.height + data + 'px';
-    console.log(circle.style.height);
-  });
+    circle.style.height = endPoint;
+    console.log("End: " + circle.style.height);
+  });*/
 };
+
+const createKeyFrames = (name, from, to) => {
+  let style = document.createElement('style'),
+    addKeyFrames = null;
+
+  document.head.appendChild(style);
+  console.log("Animation: " + name);
+  const pos = style.length;
+  style.innerHTML = '.Class' + name + '{ animation-name: Animation' + name + 'animation-duration: 1s; }';
+  style.sheet.insertRule(
+    "@keyframes Animation" + name + "{ from {height: " + from + ";}" + "to: {height: " + to + ";}}", pos);
+  return '.Class' + name;
+}
 
 const animateOnFrequency = (data, id) => {
   let circle = document.getElementById(id);
@@ -27,7 +43,7 @@ const animateOnFrequency = (data, id) => {
 };
 
 const setStylingForElement = newDiv => {
-  newDiv.style.height = "10px";
+  newDiv.style.height = "0px";
   newDiv.style.width = "100px";
   newDiv.style.borderRadius = "25px";
   newDiv.style.border = "1px solid";
@@ -51,11 +67,11 @@ const createFrequencyElements = frequencyLength => {
     if (!document.getElementById("Frequency" + i)){
       div = document.createElement("div");
       div.setAttribute("id", "Frequency" + i);
+      setStylingForElement(div);
     }
     else{
       div = document.getElementById("Frequency" + i);
     }
-    setStylingForElement(div);
     document.getElementById("main").appendChild(div);
   }
 };

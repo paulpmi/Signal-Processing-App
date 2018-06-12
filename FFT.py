@@ -12,4 +12,4 @@ selectedFrequencies = frequency[2000:]
 
 for i in selectedFrequencies:
     print(i[0], " ", i[1])
-    sleep(0.3)
+    sleep(2)

@@ -7,32 +7,13 @@
     display: flex;
 }
 
-.high{
-    animation-name: highFreq;
-    animation-duration: 0.1s;
+.newFrequency{
+    animation-name: frequencyChange;
+    animation-duration: 1s;
 }
 
-.med{
-    animation-name: medFreq;
-    animation-duration: 0.2s;
-}
-
-.low{
-    animation-name: lowFreq;
-    animation-duration: 0.1s;
-}
-
-@keyframes highFreq {
+@keyframes frequencyChange {
     from {height: var(--startLocation);}
     to {height: var(--endLocation);}
 }
 
-@keyframes medFreq {
-    from {height: var(--startLocation);}
-    to {height: var(--endLocation);}
-}
-
-@keyframes lowFreq {
-    from {height: var(--startLocation);}
-    to {height: var(--endLocation);}
-}
