@@ -3,9 +3,6 @@ const removeExistingAnimationClasses = circle => {
 };
 
 const addAnimationClass = (newFrequency, circle) => {
-  let style = document.documentElement.style;
-  console.log("START POINT: " + circle.style.height);
-
   let endPoint = newFrequency + 'px';
 
   if (circle.style.height == endPoint){
@@ -19,6 +16,7 @@ const addAnimationClass = (newFrequency, circle) => {
 const animateOnFrequency = (data, id) => {
   let circle = document.getElementById(id);
   removeExistingAnimationClasses(circle);
+  
   void circle.offsetWidth;
   addAnimationClass(data, circle);
 };
