@@ -6,16 +6,14 @@ const addAnimationClass = (newFrequency, circle) => {
   let style = document.documentElement.style;
   console.log("START POINT: " + circle.style.height);
 
-  const endPoint = newFrequency + 'px';
+  let endPoint = newFrequency + 'px';
+
+  if (circle.style.height == endPoint){
+    endPoint = '0px';
+  }
+
   circle.animate([ {height: circle.style.height}, {height: endPoint} ], {duration: 100});
   circle.style.height = endPoint;
-  
-  /*
-  circle.addEventListener("webkitAnimationEnd", () => {
-    circle.style.height = endPoint;
-    console.log("End: " + circle.style.height);
-  });
-  */
 };
 
 const animateOnFrequency = (data, id) => {
