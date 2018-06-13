@@ -7,11 +7,15 @@ const addAnimationClass = (newFrequency, circle) => {
   console.log("START POINT: " + circle.style.height);
 
   const endPoint = newFrequency + 'px';
-  circle.animate([ {height: circle.style.height}, {height: endPoint} ], {duration: 1000});
+  circle.animate([ {height: circle.style.height}, {height: endPoint} ], {duration: 100});
+  circle.style.height = endPoint;
+  
+  /*
   circle.addEventListener("webkitAnimationEnd", () => {
     circle.style.height = endPoint;
     console.log("End: " + circle.style.height);
   });
+  */
 };
 
 const animateOnFrequency = (data, id) => {
